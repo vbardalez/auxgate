@@ -16,7 +16,7 @@ var auth = require('./routes/auth');
 
 var client_id = 'f35c748829ad4a7382b163a38c307d3e'; // Your client id
 var client_secret = '17c0f4df8c9e47adbcb11235fe58d963'; // Your client secret
-var redirect_uri = 'http://www.auxgate.xyz/callback'; // Your redirect uri
+var redirect_uri = 'http://www.auxgate.xyz/auth/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -63,8 +63,6 @@ app.use(express.static(__dirname + '/public'))
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
-
-
 
 console.log('Listening on 8888');
 app.listen(8888);
@@ -172,7 +170,6 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-console.log('Listening on 8888');
 app.listen(8888);
 
 

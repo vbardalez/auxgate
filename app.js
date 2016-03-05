@@ -14,7 +14,7 @@ var users = require('./routes/users');
 
 var client_id = 'f35c748829ad4a7382b163a38c307d3e'; // Your client id
 var client_secret = '17c0f4df8c9e47adbcb11235fe58d963'; // Your client secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var redirect_uri = 'http://www.auxgate.xyz/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters

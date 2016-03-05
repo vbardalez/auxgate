@@ -1,1 +1,25 @@
-{{name}}
+<div class="grid-block vertical large-12 small-12">
+	<div class="grid-block">
+		<form>
+			<span class="inline-label">
+			<input type="search" placeholder="Search a thing">
+			<a href="#" class="button">Search</a>
+			</span>
+		</form>
+	</div>
+	<div class="grid-block" >
+		<div class="grid-block vertical" style="overflow-y: auto; max-height:70vh">
+			<div class="grid-block" ng-repeat="song in searchedSongs | orderBy: '-votes' track by $index" style="overflow-y: hidden; overflow-x: hidden; min-height:50px">
+		          <div class="grid-block large-2 small-2"style="overflow-y: hidden; overflow-x: hidden"><div class="grid-content" style="overflow-y: hidden; overflow-x: hidden">
+		            {{song.votes}}
+		          </div></div>
+		        <div class="grid-block large-4 small-4" style="overflow-y: hidden; overflow-x: hidden"><div class="grid-content" style="overflow-y: hidden; overflow-x: hidden">
+		          {{song.name}}
+		        </div></div>
+		        <div class="grid-block large-6 small-6" style="overflow-y: hidden; overflow-x: hidden"> <div class="grid-content" style="overflow-y: hidden; overflow-x: hidden">
+		        {{song.artist}}
+		        </div></div>
+			</div>
+	</div>
+</div>
+</div>

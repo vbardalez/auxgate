@@ -1,4 +1,6 @@
 
+var apiURL = "https://abc.bca";
+
   var app = angular.module('application', [
     'ui.router',
     'ngAnimate',
@@ -18,11 +20,17 @@
 	$scope.Description = "AuxGate is a gateway that allows the audience to get input on what song gets played";
 	}]);
 
+
   app.controller('eventController', ['$scope', '$http', 'ModalFactory', function ($scope, $http, ModalFactory) {
 	$scope.title = "Event";
-	$scope.startEvent = function(event) {
-		$http.post("abc.abc", event).then(()=> {alert("Success");}, () => {alert("Failed")});
+	$scope.startEvent = function(e) {
+		$http.post(apiURL, e).then(()=> {alert("Success");}, () => {alert("Failed")});
 	}
+
+  $scope.updateRepo = function () {
+    $http.get(apiURL).then((data)=> {$scope.playlist=data;}, () => {alert("update failed");});
+  }
+
 
   $scope.addModal = function () {
     var modal = new ModalFactory({
@@ -37,17 +45,59 @@
       templateUrl: 'templates/addsong.html',
       // Allows you to pass in properties to the scope of the modal
       contentScope: {
+        searchedSongs: [{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "deqwerf", votes: 5},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "deerqwf", votes: 2},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "dafef", votes: 1},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "dasdfef", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "adfdef", votes: 4},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "def", votes: 5},
+  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "deqwerf", votes: 5},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "deerqwf", votes: 2},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "dafef", votes: 1},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "dasdfef", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "adfdef", votes: 4},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "def", votes: 5},{name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "deqwerf", votes: 5},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "deerqwf", votes: 2},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "dafef", votes: 1},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "dasdfef", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "adfdef", votes: 4},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
+  {name: "abc", artist: "def", votes: 5}],
         close: function() {
           modal.deactivate(); 
         $timeout(function() {
           modal.destroy();
           }, 1000);
         },
+        addSong: function (song) {
+            $http.get(apiURL, song).then((data)=> {
+            $scope.playlist=data;
+            $scope.updateRepo();
+          }, () => {
+            alert("update failed");
+          });
+        },
+        searchSong: function (query, searchedSongs) {
+          $http.get(apiURL, query).then((data) => {
+              searchedSongs=data;
+          }, () => {alert("failed to search song");})
+        }, 
+
         name: "Add a song"
       }
       });
       modal.activate();
   }
+
 	$scope.Description = "This event is for turnups";
 	$scope.playlist = {songs: [{name: "Baby", artist: "Justin Bieber", votes: 4}, 
 	{name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
@@ -60,7 +110,7 @@
 	{name: "abc", artist: "adfdef", votes: 4},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
 	{name: "abc", artist: "def", votes: 5}], Name: "Name"};
 	}]);
-
+  
   config.$inject = ['$urlRouterProvider', '$locationProvider', '$stateProvider'];
 
   function config($urlProvider, $locationProvider, $stateProvider) {

@@ -45,13 +45,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-<<<<<<< HEAD
 app.use(express.static(path.join(__dirname, '/')));
-=======
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'))
    .use(cookieParser());
->>>>>>> 47c6ee2d40d72fccbbe7c9dd6eb4ac8af15fe9a2
 
 app.use('/', routes);
 app.use('/users', users);

@@ -5,16 +5,27 @@
 
 <a class="button" href="#" zf-open="my-notify">Static Notification</a>
  <div class="grid-block vertical" style="background-color:#D3D3D3">
-  <div class="grid-block" ng-repeat="song in playlist.songs | orderBy: 'votes' track by $index">
-      <div class="grid-content large-2 small-2" >
-        {{song.votes}}
+  <div class="grid-block" ng-repeat="song in playlist.songs | orderBy: '-votes' track by $index">
+      <div class="grid-block vertical large-2 small-2" style="align:center">
+        <div class="grid-block" ><div class="grid-content" style="text-align:center; padding-top: 5px" >
+           <a><img zf-iconic="" icon="chevron" icon-attrs="{ direction: 'top' }" size="small"></a>
+         </div>
+          </div>
+          <div class="grid-block"><div class="grid-content" style="text-align:center">
+            {{song.votes}}
+          </div>
+        </div>
+          <div class="grid-block" ><div class="grid-content" style="text-align:center; padding-bottom: 5px">
+            <a><img zf-iconic="" icon="chevron" icon-attrs="{ direction: 'bottom' }" size="small"></a>
+          </div>
+        </div>
       </div>
-
-      <div class="grid-content large-6 small-6" >
-        {{song.name}}
-      </div>
-        <div class="grid-content large-4 small-4" >
+        <div class="grid-content large-6 small-6" style="padding-top: 13px">
+          {{song.name}}
+        </div>
+        <div class="grid-content large-4 small-4" style="padding-top: 13px">
         {{song.artist}}
+        </div>
       </div>
- </div>
+    </div>
 </div>

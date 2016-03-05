@@ -9,13 +9,13 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var routes = require('./routes/index'); 
 var users = require('./routes/users');
 var auth = require('./routes/auth');
-
+ 
 var app = express();
 
 spotifyApi = new SpotifyWebApi({
     clientId: 'f35c748829ad4a7382b163a38c307d3e',
     clientSecret: '17c0f4df8c9e47adbcb11235fe58d963',
-    redirectUri: 'http://localhost:8888/auth/callback'
+    redirectUri: 'http://www.auxgate.xyz/auth/callback' 
 });
 
 // view engine setup

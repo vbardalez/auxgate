@@ -1,45 +1,23 @@
+<div class="grid-container">
+  <h1>{{title}}</h1>
+  <p class="lead"><strong>{{Description}}</strong>.</p>
 
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-<script src="http://requirejs.org/docs/release/2.1.22/minified/require.js"></script>
-<script src="./node_modules/irc/lib/irc.js"></script>
+<a class="button" href="#" zf-open="my-notify">Static Notification</a>
+ 
+<zf-notification-static id="my-notify" zf-advise="" title="My static notification" image="http://placehold.it/40x40">
+<p>This notification is static, it works similarly to a programmatic with some subtle differences.</p>
+</zf-notification-static>
 
-<script>
-
-    $(document).foundation();
-
-
-	//var irc = require(['irc']);
-	//var irc  = require('./node_modules/irc/lib/irc.js');
-
-
-	define(['require', 'irc'], function(require) {
-
-		require(irc, function() {
-
-			var client = new irc.Client('irc.snoonet.org', 'kappa123', {
-			    channels: ['#android'],
-			});
-
-		});
-	});
-	
-
-    //var irc = require('irc');
-    /*
-	var util = require('util');
-	var color = require('ansi-color').set;
-
-	var client = new irc.Client('irc.snoonet.org', 'kappa123', {
-	    channels: ['#android'],
-	});
-
-	client.addListener('message', function (from, to, message) {
-	    console.log(from + ' => ' + to + ': ' + message);
-	    alert();
-	});
-	*/
-
-
-
-</script>
+	<form ng-submit="startEvent(event)">
+		<label>
+			Name
+			<input type="text" placeholder="Text field" ng-model="event.Name">
+		</label>
+		<label>
+			Description
+			<textarea rows="5" ng-model="event.Description"></textarea>
+		</label>
+		{{event}}
+		<input type=submit class="button" ui-sref="event"></input>
+	</form>
+</div>

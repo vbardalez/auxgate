@@ -1,0 +1,45 @@
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+<script src="http://requirejs.org/docs/release/2.1.22/minified/require.js"></script>
+<script src="./node_modules/irc/lib/irc.js"></script>
+
+<script>
+
+    $(document).foundation();
+
+
+	//var irc = require(['irc']);
+	//var irc  = require('./node_modules/irc/lib/irc.js');
+
+
+	define(['require', 'irc'], function(require) {
+
+		require(irc, function() {
+
+			var client = new irc.Client('irc.snoonet.org', 'kappa123', {
+			    channels: ['#android'],
+			});
+
+		});
+	});
+	
+
+    //var irc = require('irc');
+    /*
+	var util = require('util');
+	var color = require('ansi-color').set;
+
+	var client = new irc.Client('irc.snoonet.org', 'kappa123', {
+	    channels: ['#android'],
+	});
+
+	client.addListener('message', function (from, to, message) {
+	    console.log(from + ' => ' + to + ': ' + message);
+	    alert();
+	});
+	*/
+
+
+
+</script>

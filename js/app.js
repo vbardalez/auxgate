@@ -4,6 +4,7 @@
     'ngAnimate',
     //foundation
     'foundation',
+    'foundation.modal',
     'foundation.dynamicRouting',
     'foundation.dynamicRouting.animations'
   ])
@@ -17,11 +18,36 @@
 	$scope.Description = "AuxGate is a gateway that allows the audience to get input on what song gets played";
 	}]);
 
-  app.controller('eventController', ['$scope', '$http', function ($scope, $http) {
+  app.controller('eventController', ['$scope', '$http', 'ModalFactory', function ($scope, $http, ModalFactory) {
 	$scope.title = "Event";
 	$scope.startEvent = function(event) {
 		$http.post("abc.abc", event).then(()=> {alert("Success");}, () => {alert("Failed")});
 	}
+
+  $scope.addModal = function () {
+    var modal = new ModalFactory({
+      // Add CSS classes to the modal
+      // Can be a single string or an array of classes
+      class: 'tiny dialog',
+      // Set if the modal has a background overlay
+      overlay: true,
+      // Set if the modal can be closed by clicking on the overlay
+      overlayClose: false,
+      // Define a template to use for the modal
+      templateUrl: 'templates/addsong.html',
+      // Allows you to pass in properties to the scope of the modal
+      contentScope: {
+        close: function() {
+          modal.deactivate(); 
+        $timeout(function() {
+          modal.destroy();
+          }, 1000);
+        },
+        name: "Add a song"
+      }
+      });
+      modal.activate();
+  }
 	$scope.Description = "This event is for turnups";
 	$scope.playlist = {songs: [{name: "Baby", artist: "Justin Bieber", votes: 4}, 
 	{name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 

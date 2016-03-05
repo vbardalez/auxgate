@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var SpotifyWebApi = require('spotify-web-api-node');
 
-var routes = require('./routes/index');
+var routes = require('./routes/index'); 
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 

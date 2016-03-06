@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var SpotifyWebApi = require('spotify-web-api-node');
 var Connection = require('tedious').Connection;
+var uuid = require('node-uuid');
 
 var config = {
     userName: 'auxgate',

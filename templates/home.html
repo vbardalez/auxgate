@@ -4,16 +4,16 @@
   <p class="lead"><strong>{{Description}}</strong>.</p>
 
 
-	<form ng-submit="startEvent(event)">
+	<form ng-submit="startEvent(a)">
 		<label>
 			Name
-			<input type="text" required="required" placeholder="Text field" ng-model="event.Name">
+			<input type="text" required="required" placeholder="Text field" ng-model="a.Name">
 		</label>
 		<label>
 			Description
-			<textarea rows="5" ng-model="event.Description"></textarea>
+			<textarea rows="5" ng-model="a.Description"></textarea>
 		</label>
-		{{event}}
-		<input type=submit class="button" ui-sref="event" ng-click="startEvent(event)"></input>
+		{{a}}
+		<input type=submit class="button" ui-sref="event" ng-click="startEvent(a)"></input>
 	</form>
 </div>

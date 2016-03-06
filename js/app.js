@@ -15,8 +15,9 @@ var apiBaseURL = "http://localhost:3000";
   app.controller('mainController', ['$scope', '$http', function ($scope, $http) {
 	$scope.title = "AuxGate";
 	$scope.startEvent = function(a) {
-          var url = apiBaseURL + "/playlist/create/";
-          $http.post(url,a.name).then((data) => {
+          var url = apiBaseURL + "/playlist/create";
+          console.log(a);
+          $http.post(url, a).then((data) => {
               console.log(data);
           }, (error) => {console.log(error);})
 	}

@@ -28,7 +28,7 @@ router.get('/login', function(req, res) {
     res.cookie(stateKey, state);
 
     // your application requests authorization
-    var scopes = ['user-read-private', 'user-read-email'];
+    var scopes = ['user-read-private', 'user-read-email', 'playlist-modify', 'playlist-modify-private', 'playlist-modify-public' , 'playlist-read-collaborative' , 'playlist-read-private'];
 
     var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
@@ -81,7 +81,7 @@ router.get('/callback', function(req, res) {
                 });
 
 
-                res.redirect('/');
+                res.redirect('/app');
             }, function(err) {
                 console.log('Something went wrong!', err);
             });

@@ -181,7 +181,7 @@ function config($urlProvider, $locationProvider, $stateProvider) {
 
     $stateProvider
         .state('home', {
-            url: "/home",
+            url: "/homme",
             templateUrl: "templates/home.html",
             controller: 'mainController'
         })

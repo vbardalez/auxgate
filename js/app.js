@@ -79,7 +79,7 @@ var apiURL = "https://abc.bca";
           }, 1000);
         },
         addSong: function (song) {
-            $http.get(apiURL, song).then((data)=> {
+            $http.post(apiURL, song).then((data)=> {
             $scope.playlist=data;
             $scope.updateRepo();
           }, () => {

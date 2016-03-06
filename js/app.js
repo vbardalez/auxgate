@@ -164,11 +164,11 @@ function config($urlProvider, $locationProvider, $stateProvider) {
         requireBase: false
     });
 
-    $locationProvider.hashPrefix('!');
+     $locationProvider.html5Mode(true);
 
     $stateProvider
         .state('home', {
-            url: "/home",
+            url: "/homme",
             templateUrl: "templates/home.html",
             controller: 'mainController'
         })

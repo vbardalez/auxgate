@@ -8,7 +8,7 @@ var TYPES = require('tedious').TYPES;
 
 router.post('/addSong', function(req, res, next) {
 
-    request = new Request("INSERT dbo.Tracks (AuxGateTrackId, SpotifyTrackId, TotalVotes, PlaylistId) OUTPUT INSERTED.AuxGateTrackId VALUES (@AuxGateTrackId, @SpotifyTrackId, @TotalVotes, @PlaylistId);", function(err) {
+    request = new Request("INSERT dbo.Tracks (AuxGateTrackId, SpotifyTrackId, TotalVotes, PlaylistId) OUTPUT VALUES (@AuxGateTrackId, @SpotifyTrackId, @TotalVotes, @PlaylistId);", function(err) {
         if (err) {
             console.log(err);
         }
@@ -25,12 +25,13 @@ router.post('/addSong', function(req, res, next) {
 
 router.post('/updateSong', function(req, res, next) {
 
-    request = new Request("UPDATE dbo.Tracks SET TotalVotes = @newTotal", function(err) {
+    request = new Request("UPDATE dbo.Tracks SET TotalVotes = @newTotal WHERE SpotifyTrackId = @trackid", function(err) {
         if (err) {
             console.log(err);
         }
     });
-    request.addParameter('newTotal', TYPES.Int, 0);
+    request.addParameter('newTotal', TYPES.Int, req.body.value);
+    request.addParameter('trackid', TYPES.NVarChar, req.body.trackId);
 
     connection.execSql(request);
 });

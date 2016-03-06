@@ -39,17 +39,11 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
         $scope.$watch('eventService', function() {
             $scope.title = eventService.id;
         });
-        $scope.startEvent = function(e) {
-            $http.post(apiURL, e).then(() => {
-                alert("Success");
-            }, () => {
-                alert("Failed")
-            });
-        }
 
         $scope.updateRepo = function() {
-            $http.get(apiURL).then((data) => {
-                $scope.playlist = data;
+            var url = apiBaseURL + "/sql/getSongs"
+            $http.get().then((data) => {
+                $scope.playlist.songs = data;
             }, () => {
                 alert("update failed");
             });
@@ -58,21 +52,27 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
         $scope.songUpvote = function(song) {
 
             songArr = $scope.playlist.songs;
-
+            var url = apiBaseURL + "sql/updateSong"
             if (!$scope.playlist.songs[songArr.indexOf(song)].up && !$scope.playlist.songs[songArr.indexOf(song)].down) { // both off
               $scope.playlist.songs[songArr.indexOf(song)].votes++;
               $scope.playlist.songs[songArr.indexOf(song)].up = true;
               $scope.playlist.songs[songArr.indexOf(song)].down = false;
+              song.votes++;
             }
             else if ($scope.playlist.songs[songArr.indexOf(song)].up) { // upvote on
               $scope.playlist.songs[songArr.indexOf(song)].votes--;
               $scope.playlist.songs[songArr.indexOf(song)].up = false;
+              song.votes--;
             }
             else if ($scope.playlist.songs[songArr.indexOf(song)].down) { // downvote on
               $scope.playlist.songs[songArr.indexOf(song)].votes += 2;
               $scope.playlist.songs[songArr.indexOf(song)].up = true;
               $scope.playlist.songs[songArr.indexOf(song)].down = false;
+              song.votes+=2;
             }
+
+
+              $http.post(url, song).then( ()=> {}, () => {"error"})
           }
 
           $scope.songDownvote = function(song) {
@@ -83,16 +83,20 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
               $scope.playlist.songs[songArr.indexOf(song)].votes--;
               $scope.playlist.songs[songArr.indexOf(song)].up = false;
               $scope.playlist.songs[songArr.indexOf(song)].down = true;
+              song.votes++;
             }
             else if ($scope.playlist.songs[songArr.indexOf(song)].down) { // downvote on
               $scope.playlist.songs[songArr.indexOf(song)].votes++;
               $scope.playlist.songs[songArr.indexOf(song)].down = false;
+              song.votes++;
             }
             else if ($scope.playlist.songs[songArr.indexOf(song)].up) { // upvote on
               $scope.playlist.songs[songArr.indexOf(song)].votes -= 2;
               $scope.playlist.songs[songArr.indexOf(song)].down = true;
               $scope.playlist.songs[songArr.indexOf(song)].up = false;
+              song.votes-=2;
             }
+              $http.post(url, song).then( ()=> {}, () => {"error"})
           }
 
         $scope.addModal = function() {
@@ -119,15 +123,25 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
                     addSong: function(_song) {
                         _song.votes = 0;
                         var url = apiBaseURL + "/playlist/add-track";
+                        var sqlurl = apiBaseURL + "/sql/addSong";
                         var data = {
                             playlistId: eventService.id,
                             song: _song
                         }
+                        var sqldata = {
+                            playlistId: eventService.id,
+                            trackId: _song.id
+                        }
                         $http.post(url, data).then(() => {
-                            $scope.playlist.songs.push(_song);
+                            $http.post(sqlurl, sqldata).then(() => {
+                                $scope.playlist.songs.push(_song);
+                            }, () => {
+                                alert("update failed");
+                            });
                         }, () => {
                             alert("update failed");
                         });
+                        
                     },
                     searchSong: function(query, searchedSongs) {
                         var url = apiBaseURL + "/search/tracks/" + query;

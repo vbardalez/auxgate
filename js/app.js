@@ -1,5 +1,5 @@
 
-var apiBaseURL = "http://www.auxgate.xyz";
+var apiBaseURL = "http://localhost:3000";
 
 var app = angular.module('application', [
     'ui.router',
@@ -57,22 +57,22 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
               $scope.playlist.songs[songArr.indexOf(song)].votes++;
               $scope.playlist.songs[songArr.indexOf(song)].up = true;
               $scope.playlist.songs[songArr.indexOf(song)].down = false;
-              song.votes++;
+              //song.votes++;
             }
             else if ($scope.playlist.songs[songArr.indexOf(song)].up) { // upvote on
               $scope.playlist.songs[songArr.indexOf(song)].votes--;
               $scope.playlist.songs[songArr.indexOf(song)].up = false;
-              song.votes--;
+              //song.votes--;
             }
             else if ($scope.playlist.songs[songArr.indexOf(song)].down) { // downvote on
               $scope.playlist.songs[songArr.indexOf(song)].votes += 2;
               $scope.playlist.songs[songArr.indexOf(song)].up = true;
               $scope.playlist.songs[songArr.indexOf(song)].down = false;
-              song.votes+=2;
+              //song.votes+=2;
             }
 
 
-              $http.post(url, song).then( ()=> {}, () => {"error"})
+              //$http.post(url, song).then( ()=> {}, () => {"error"})
           }
 
           $scope.songDownvote = function(song) {
@@ -83,20 +83,20 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
               $scope.playlist.songs[songArr.indexOf(song)].votes--;
               $scope.playlist.songs[songArr.indexOf(song)].up = false;
               $scope.playlist.songs[songArr.indexOf(song)].down = true;
-              song.votes++;
+              //song.votes++;
             }
             else if ($scope.playlist.songs[songArr.indexOf(song)].down) { // downvote on
               $scope.playlist.songs[songArr.indexOf(song)].votes++;
               $scope.playlist.songs[songArr.indexOf(song)].down = false;
-              song.votes++;
+              //song.votes++;
             }
             else if ($scope.playlist.songs[songArr.indexOf(song)].up) { // upvote on
               $scope.playlist.songs[songArr.indexOf(song)].votes -= 2;
               $scope.playlist.songs[songArr.indexOf(song)].down = true;
               $scope.playlist.songs[songArr.indexOf(song)].up = false;
-              song.votes-=2;
+              //song.votes-=2;
             }
-              $http.post(url, song).then( ()=> {}, () => {"error"})
+              //$http.post(url, song).then( ()=> {}, () => {"error"})
           }
 
         $scope.addModal = function() {
@@ -133,15 +133,15 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
                             trackId: _song.id
                         }
                         $http.post(url, data).then(() => {
-                            $http.post(sqlurl, sqldata).then(() => {
+                            
                                 $scope.playlist.songs.push(_song);
-                            }, () => {
-                                alert("update failed");
-                            });
                         }, () => {
                             alert("update failed");
-                        });
-                        
+                        });/*
+                        $http.post(sqlurl, sqldata).then(() => {
+                            }, () => {
+                                alert("update failed");
+                            }); */
                     },
                     searchSong: function(query, searchedSongs) {
                         var url = apiBaseURL + "/search/tracks/" + query;
@@ -161,7 +161,8 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
             modal.activate();
         }
 
-        $scope.Description = "This event is for turnups";
+        $scope.title = "Friday Nights at Stages";
+        $scope.Description = "Welcome to our event!";
         $scope.playlist = {
             songs: [],
             Name: "Name"
@@ -178,7 +179,6 @@ function config($urlProvider, $locationProvider, $stateProvider) {
         requireBase: false
     });
 
-    $locationProvider.hashPrefix('!');
 
     $stateProvider
         .state('home', {

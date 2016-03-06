@@ -11,3 +11,7 @@ body {
 .selectedElem {
 	font-weight: bold;
 }
+
+.voteButton {
+	cursor: pointer;
+}

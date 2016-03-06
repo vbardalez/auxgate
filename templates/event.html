@@ -1,8 +1,8 @@
-<div class="grid-container small-12 large-8 medium-12">
+<div class="grid-container small-12 large-8 medium-12" style="margin-top: 30px">
   <h1>{{title}}</h1>
   <p class="lead"><strong>{{Description}}</strong>.</p>
   <a class="button" href="#" zf-open="my-notify">Static Notification</a>
-  <div class="grid-block rowHeadings" style="background-color:#D3D3D3">
+  <div class="grid-block rowHeadings" style="background-color:#D3D3D3; margin-top: 30px">
     <div class="grid-content large-2 small-2" style="align:center">
     </div>
     <div class="grid-content large-4 small-4" style="padding-top: 13px">
@@ -20,7 +20,7 @@
       <div class="grid-content vertical large-2 small-2" style="align:center">
         <div class="grid-block">
           <div class="grid-content" style="text-align:center; padding-top: 5px" >
-            <img zf-iconic="" ng-class="{'iconic-color-success':song.up, 'animated fadeIn':song.up}" icon="chevron" icon-attrs="{ direction: 'top' }" size="small" ng-click="songUpvote(song);">
+            <img zf-iconic="" class="voteButton" ng-class="{'iconic-color-success':song.up, 'animated fadeIn':song.up}" icon="chevron" icon-attrs="{ direction: 'top' }" size="small" ng-click="songUpvote(song);">
           </div>
         </div>
         <div class="grid-block">
@@ -30,7 +30,7 @@
         </div>
         <div class="grid-block" >
           <div class="grid-content" style="text-align:center; padding-bottom: 5px">
-          <img zf-iconic="" ng-class="{'iconic-color-alert':song.down, 'animated fadeIn':song.down}" icon="chevron" icon-attrs="{ direction: 'bottom' }" size="small" ng-click="songDownvote(song)">
+          <img zf-iconic="" class="voteButton" ng-class="{'iconic-color-alert':song.down, 'animated fadeIn':song.down}" icon="chevron" icon-attrs="{ direction: 'bottom' }" size="small" ng-click="songDownvote(song)">
           </div>
         </div>
       </div>

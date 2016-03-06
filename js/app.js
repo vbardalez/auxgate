@@ -133,8 +133,13 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
                             trackId: _song.id
                         }
                         $http.post(url, data).then(() => {
+<<<<<<< HEAD
                             
                                 $scope.playlist.songs.push(_song);
+=======
+                            $scope.playlist.songs.push(_song);
+                            //$scope.playlist.songs[0] hasSongs = true;
+>>>>>>> 5b067fce19382d0849970e9a958d690228d8ea93
                         }, () => {
                             alert("update failed");
                         });/*
@@ -159,6 +164,7 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
                 }
             });
             modal.activate();
+
         }
 
         $scope.title = "Friday Nights at Stages";

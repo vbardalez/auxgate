@@ -1,5 +1,5 @@
 
-var apiURL = "http://localhost:8888/search/";
+var apiURL = "http://localhost:3000/search/";
 
   var app = angular.module('application', [
     'ui.router',

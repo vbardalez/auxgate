@@ -3,24 +3,51 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auxgate</title>
+    <title>AuxGate</title>
+
+    <!-- css -->
     <link href="assets/css/app.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- js libraries -->
     <script src="assets/js/foundation.js"></script>
     <script src="assets/js/templates.js"></script>
     <script src="node_modules/foundation-apps/js/angular/services/foundation.core.js"></script>
     <script src="/js/app.js"></script>
+
+    <!-- font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:600' rel='stylesheet' type='text/css'>
+
   </head>
   <body>
     <div class="grid-frame vertical">
-      <div class="grid-container">
-      <div class="grid-block" style="padding-top:20vh">
-        <h1>Auxgate</h1>
+      <div class="grid-container homeContainer">
 
-      </div>
-      <div class="grid-block">
-        <a href="./auth/login"><img src="public/images/Login/png/log_in-desktop-large.png"/></a>
-      </div>
+  <div class="grid-block vertical" style="text-align: center;">
+      <div class="grid-content">
+      <img class="logoCircle" style="width: 250px; height: 250px; margin: 0 auto 0 auto;" src="./assets/img/auxgate_med.png"/>
+      <h1 style="margin: 0 auto 0 auto;">AuxGate</h1>
     </div>
+    <div class="grid-content" style="padding-top: 15px;">
+      <p style="margin: 0 auto 0 auto; font-size: 24px; font-style: italic;">Pass the Aux Cord</p>
+    </div>
+    <div class="grid-content" style="padding-top: 15px;">
+      <p style="margin: 0 auto 0 auto; font-size: 18px;">AuxGate is a gateway that allows the audience to get input on what song gets played</p>
+    </div>
+    <div class="grid-content" style="padding-top: 15px;">
+      <a href="./auth/login">
+          <img src="public/images/Login/png/log_in-desktop-large.png"/></a>
+    </div>
+    <div class="grid-content" style="padding-top: 30px;">
+          <a class="button" ng-click="addModal()">Create an Aux playlist</a>
+    </div>
+  </div>
+</div>
+      </div>
     </div>
   </body>
 </html>

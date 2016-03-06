@@ -1,5 +1,5 @@
 
-var apiURL = "https://abc.bca";
+var apiURL = "http://localhost:8888/search/";
 
   var app = angular.module('application', [
     'ui.router',
@@ -87,8 +87,10 @@ var apiURL = "https://abc.bca";
           });
         },
         searchSong: function (query, searchedSongs) {
-          $http.get(apiURL, query).then((data) => {
+          var url = apiURL + query;
+          $http.get(url).then((data) => {
               searchedSongs=data;
+              console.log(data);
           }, () => {alert("failed to search song");})
         }, 
 

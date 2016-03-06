@@ -5,5 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'AuxGate' });
 });
-
+router.get('/event', function(req, res, next) {
+  res.render('app', { title: 'AuxGate' });
+});
 module.exports = router;

@@ -2,8 +2,8 @@
 	<div class="grid-block">
 		<form>
 			<span class="inline-label">
-			<input type="search" placeholder="Search a thing">
-			<a href="#" class="button">Search</a>
+			<input type="search" placeholder="Search a thing" ng-model="query">
+			<a href="#" class="button" ng-click="searchSong(query, searchedSongs)">Search</a>
 			</span>
 		</form>
 	</div>

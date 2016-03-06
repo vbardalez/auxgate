@@ -77,6 +77,11 @@ textarea.copyURL {
 	font-family: 'Source Code Pro', Arial;
 	text-transform: uppercase;
 	font-weight: 600;
+	display: none;
+}
+
+.visible {
+	display: flex;
 }
 
 .rowHeadings div {

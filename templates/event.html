@@ -29,7 +29,7 @@
       </div>
       <div class="grid-content medium-2 small-1"></div>
   </div>
-  <div class="grid-block rowHeadings">
+  <div class="grid-block rowHeadings" ng-class="{'visible':playlist.songs[0] != undefined}">
     <div class="grid-content medium-2 small-2" style="text-align: center; padding-top: 13px">
       &nbsp;
     </div>
@@ -71,7 +71,7 @@
         </div> 
       </div>
       <div class="grid-content medium-3 small-1 hideCol" style="padding-top: 13px">
-        {{song.duration}}
+        {{song.duration_ms}}
       </div>
     </div>
   </div>

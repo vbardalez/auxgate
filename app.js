@@ -25,6 +25,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 var search = require('./routes/search');
+var playlist = require('./routes/playlist');
 
 var stateKey = 'spotify_auth_state';
 
@@ -33,7 +34,7 @@ var app = express();
 spotifyApi = new SpotifyWebApi({
     clientId: 'f35c748829ad4a7382b163a38c307d3e',
     clientSecret: '17c0f4df8c9e47adbcb11235fe58d963',
-    redirectUri: 'http://www.auxgate.xyz/auth/callback' 
+    redirectUri: 'http://localhost:3000/auth/callback' 
 });
 
 // view engine setup
@@ -57,6 +58,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/search', search);
+app.use('/playlist', playlist);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,4 +1,4 @@
-var apiBaseURL = "http://localhost:3000";
+var apiBaseURL = "http://www.auxgate.xyz";
 
 var app = angular.module('application', [
     'ui.router',

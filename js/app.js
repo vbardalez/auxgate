@@ -31,14 +31,14 @@ app.controller('mainController', ['$scope', '$http', 'eventService',
             })
         }
         $scope.slogan = "Pass the Aux Cord";
-        $scope.Description = "AuxGate is a gateway that allows the audience to get input on what song gets played";
+        $scope.Description = "Create an event using AuxGate and share the url to allow users to vote on their favourite songs!";
     }
 ]);
 
 
 app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventService',
     function($scope, $http, ModalFactory, eventService) {
-        $scope.title = eventService.id;
+        $scope.title = "Event";
         $scope.$watch('eventService', function() {
             $scope.title = eventService.id;
         });
@@ -60,7 +60,7 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
 
         $scope.songUpvote = function(song) {
 
-          songArr = $scope.playlist.songs;
+            songArr = $scope.playlist.songs;
 
             if (!$scope.playlist.songs[songArr.indexOf(song)].up && !$scope.playlist.songs[songArr.indexOf(song)].down) { // both off
               $scope.playlist.songs[songArr.indexOf(song)].votes++;
@@ -100,6 +100,10 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
 
         $scope.addModal = function() {
             console.log(eventService.id);
+
+            // show column titles
+
+
             var modal = new ModalFactory({
                 // Add CSS classes to the modal
                 // Can be a single string or an array of classes

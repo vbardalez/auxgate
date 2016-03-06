@@ -21,11 +21,8 @@ app.controller('mainController', ['$scope', '$http', 'eventService',
         $scope.title = "AuxGate";
         $scope.startEvent = function(a) {
             var url = apiBaseURL + "/playlist/create";
-            console.log(a);
             $http.post(url, a).then((data) => {
-                console.log(data);
                 eventService.id = data.data.body.id;
-                console.log(eventService.id);
             }, (error) => {
                 console.log(error);
             })
@@ -102,10 +99,6 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
           }
 
         $scope.addModal = function() {
-            console.log(eventService.id);
-
-            // show column titles
-
 
             var modal = new ModalFactory({
                 // Add CSS classes to the modal
@@ -127,22 +120,14 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
                         }, 1000);
                     },
                     addSong: function(_song) {
-                        _song.votes=0;
-                        console.log(_song);
-                        var spoturl = apiBaseURL + "/playlist/add-track";
-                        var data = {playlistId: eventService.id,
-                                    song: _song}
-                        $http.post(spoturl, data).then(() => {
-                            console.log($scope.playlist);
+                        _song.votes = 0;
+                        var url = apiBaseURL + "/playlist/add-track";
+                        var data = {
+                            playlistId: eventService.id,
+                            song: _song
+                        }
+                        $http.post(url, data).then(() => {
                             $scope.playlist.songs.push(_song);
-                            console.log($scope.playlist.songs);
-                            var sqlurl = apiBaseURL + "/sql/addSong";
-                            var sqldata = {playlistId: eventService.id,
-                                        trackId: _song.id};
-                            $http.post(url, data).then(() => {
-                            }, () => {
-                                alert("update failed");
-                            });
                         }, () => {
                             alert("update failed");
                         });
@@ -205,3 +190,4 @@ function run() {
 }
 app.config(config)
     .run(run);
+    

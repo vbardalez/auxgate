@@ -43,9 +43,6 @@ app.use('/users', users);
 app.use('/auth', auth);
 app.use('/search', search);
 
-console.log('Listening on 8888');
-app.listen(8888);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

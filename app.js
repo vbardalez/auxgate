@@ -6,32 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var SpotifyWebApi = require('spotify-web-api-node');
 
-var request = require('request'); // "Request" library
-var querystring = require('querystring');
-var cookieParser = require('cookie-parser');
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
-
-var client_id = 'f35c748829ad4a7382b163a38c307d3e'; // Your client id
-var client_secret = '17c0f4df8c9e47adbcb11235fe58d963'; // Your client secret
-var redirect_uri = 'http://www.auxgate.xyz/auth/callback'; // Your redirect uri
-
-/**
- * Generates a random string containing numbers and letters
- * @param  {number} length The length of the string
- * @return {string} The generated string
- */
-var generateRandomString = function(length) {
-  var text = '';
-  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  for (var i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
-};
 
 var stateKey = 'spotify_auth_state';
 
@@ -66,7 +43,6 @@ app.use('/auth', auth);
 
 console.log('Listening on 8888');
 app.listen(8888);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

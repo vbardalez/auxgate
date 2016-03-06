@@ -1,5 +1,5 @@
 
-var apiBaseURL = "http://localhost:3000";
+var apiBaseURL = "http://www.auxgate.xyz";
 
 var app = angular.module('application', [
     'ui.router',
@@ -36,9 +36,6 @@ app.controller('mainController', ['$scope', '$http', 'eventService',
 app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventService',
     function($scope, $http, ModalFactory, eventService) {
         $scope.title = "Event";
-        $scope.$watch('eventService', function() {
-            $scope.title = eventService.id;
-        });
 
         $scope.updateRepo = function() {
             var url = apiBaseURL + "/sql/getSongs"
@@ -133,12 +130,12 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
                             trackId: _song.id
                         }
                         $http.post(url, data).then(() => {
-                            $http.post(sqlurl, sqldata).then(() => {
+                            //$http.post(sqlurl, sqldata).then(() => {
                                 $scope.playlist.songs.push(_song);
-                            }, () => {
-                                alert("update failed");
-                            });
-                        }, () => {
+                            //}, () => {
+                            //    alert("update failed");
+                            }
+                        , () => {
                             alert("update failed");
                         });/*
                         $http.post(sqlurl, sqldata).then(() => {
@@ -164,7 +161,7 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
             modal.activate();
         }
 
-        $scope.title = "Friday Nights at Stages";
+        $scope.title = "Friday Night Banger";
         $scope.Description = "Welcome to our event!";
         $scope.playlist = {
             songs: [],

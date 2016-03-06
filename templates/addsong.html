@@ -13,9 +13,9 @@
 		<form>
 			<span class="inline-label">
 				<div class="grid-block small-10">
-					<input class="searchSong" type="search" size="50%" placeholder="Search for a song..."/>
+					<input class="searchSong" type="search" size="50%" placeholder="Search for a song..." ng-model="query">
 				</div>
-				<a href="#" class="button">
+				<a ng-click="searchSong(query, searchedSongs)" class="button">
 					<i class="fa fa-search"></i>
 				</a>
 			</span>
@@ -35,10 +35,9 @@
 		</div>
 		<div class="grid-block vertical" style="overflow-y: auto; max-height:70vh">
 			<div class="grid-block" ng-repeat="song in searchedSongs | orderBy: '-votes' track by $index" style="overflow-y: hidden; overflow-x: hidden; min-height:50px">
-		          
 		        <div class="grid-block medium-2 small-2"style="overflow-y: hidden; overflow-x: hidden">
 		        	<div class="grid-content" style="overflow-y: hidden; overflow-x: hidden">
-		            	<i class="fa fa-plus fa-2x"></i>
+		            	<i ng-click="addSong(song, song.artists)" class="fa fa-plus fa-2x"></i>
 		          	</div>
 		        </div>
 		        <div class="grid-block medium-5 small-5" style="overflow-y: hidden; overflow-x: hidden">
@@ -48,7 +47,9 @@
 		        </div>
 		        <div class="grid-block medium-5 small-5" style="overflow-y: hidden; overflow-x: hidden">
 		        	<div class="grid-content" style="overflow-y: hidden; overflow-x: hidden">
-		        		{{song.artist}}
+			        	<div ng-repeat="artist in song.artists track by $index"> 
+			        		{{artist.name}}
+			    		</div> 
 		        	</div>
 		        </div>
 			</div>

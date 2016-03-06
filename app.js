@@ -5,6 +5,20 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var SpotifyWebApi = require('spotify-web-api-node');
+var Connection = require('tedious').Connection;
+
+var config = {
+    userName: 'auxgate',
+    password: 'QHacks16!',
+    server: 'auxgate.database.windows.net',
+    // If you are on Microsoft Azure, you need this:
+    options: {encrypt: true, database: 'AdventureWorks'}
+};
+var connection = new Connection(config);
+connection.on('connect', function(err) {
+// If no error, then good to proceed.
+    console.log("Connected");
+});
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

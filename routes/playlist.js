@@ -4,9 +4,6 @@ var router = express.Router();
 
 
 router.post('/create', function(req, res, next) {
-    // Search artists whose name contains 'Love'
-    console.log(req.body);
-
     spotifyApi.getMe()
         .then(function(_user) {
             var user = _user.body.id;
@@ -14,7 +11,6 @@ router.post('/create', function(req, res, next) {
                 'public': true
             })
                 .then(function(data) {
-                    console.log(data);
                     res.json(data);
                 }, function(err) {
                     res.json(err);
@@ -40,14 +36,13 @@ router.post('/add-track', function(req, res, next) {
     // Search tracks whose artist's name contains 'Love'
     spotifyApi.getMe()
         .then(function(_user) {
-                    var user = _user.body.id;
-                    console.log(req.body);
-                    spotifyApi.addTracksToPlaylist(user, req.body.playlistId, ["spotify:track:" + req.body.song.id])
-                        .then(function(data) {
-                            res.json(data);
-                        }, function(err) {
-                            res.json(err);
-                        });
+            var user = _user.body.id;
+            spotifyApi.addTracksToPlaylist(user, req.body.playlistId, ["spotify:track:" + req.body.song.id])
+                .then(function(data) {
+                    res.json(data);
+                }, function(err) {
+                    res.json(err);
+                });
         }, function(e) {
             res.send(e);
         });

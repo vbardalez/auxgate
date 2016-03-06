@@ -20,11 +20,8 @@ app.controller('mainController', ['$scope', '$http', 'eventService',
         $scope.title = "AuxGate";
         $scope.startEvent = function(a) {
             var url = apiBaseURL + "/playlist/create";
-            console.log(a);
             $http.post(url, a).then((data) => {
-                console.log(data);
                 eventService.id = data.data.body.id;
-                console.log(eventService.id);
             }, (error) => {
                 console.log(error);
             })
@@ -58,7 +55,6 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
 
 
         $scope.addModal = function() {
-            console.log(eventService.id);
             var modal = new ModalFactory({
                 // Add CSS classes to the modal
                 // Can be a single string or an array of classes
@@ -79,15 +75,14 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
                         }, 1000);
                     },
                     addSong: function(_song) {
-                        _song.votes=0;
-                        console.log(_song);
+                        _song.votes = 0;
                         var url = apiBaseURL + "/playlist/add-track";
-                        var data = {playlistId: eventService.id,
-                                    song: _song}
+                        var data = {
+                            playlistId: eventService.id,
+                            song: _song
+                        }
                         $http.post(url, data).then(() => {
-                            console.log($scope.playlist);
                             $scope.playlist.songs.push(_song);
-                            console.log($scope.playlist.songs);
                         }, () => {
                             alert("update failed");
                         });
@@ -149,3 +144,4 @@ function run() {
 }
 app.config(config)
     .run(run);
+    

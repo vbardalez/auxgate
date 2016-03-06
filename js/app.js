@@ -130,7 +130,7 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
                         }
                         var sqldata = {
                             playlistId: eventService.id,
-                            entityId: _song.id
+                            trackId: _song.id
                         }
                         $http.post(url, data).then(() => {
                             $http.post(sqlurl, sqldata).then(() => {

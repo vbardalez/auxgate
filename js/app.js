@@ -154,6 +154,11 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
             songs: [],
             Name: "Name"
         };
+
+        $scope.ms_to_min_sec = function(ms) {
+            var secondsStr = "" + parseInt(ms/1000);
+            return (parseInt(ms/60000) + ":" + secondsStr.substring(0,2));
+        };
     }
 ]);
 

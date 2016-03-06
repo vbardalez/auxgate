@@ -40,7 +40,7 @@ h1 {
 
 .logoCircle {
 	border-radius: 50%;
-	background: url(../img/pattern.png) no-repeat 60px center fixed;
+	background: url(../img/pattern.png) no-repeat center center scroll;
     -webkit-background-size: contain;
 	-moz-background-size: contain;
 	-o-background-size: contain;

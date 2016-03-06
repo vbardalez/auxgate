@@ -1,4 +1,5 @@
-var apiBaseURL = "http://www.auxgate.xyz";
+
+var apiBaseURL = "http://localhost:3000";
 
 var app = angular.module('application', [
     'ui.router',
@@ -29,14 +30,15 @@ app.controller('mainController', ['$scope', '$http', 'eventService',
                 console.log(error);
             })
         }
-        $scope.Description = "AuxGate is a gateway that allows the audience to get input on what song gets played";
+        $scope.slogan = "Pass the Aux Cord";
+        $scope.Description = "Create an event using AuxGate and share the url to allow users to vote on their favourite songs!";
     }
 ]);
 
 
 app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventService',
     function($scope, $http, ModalFactory, eventService) {
-        $scope.title = eventService.id;
+        $scope.title = "Event";
         $scope.$watch('eventService', function() {
             $scope.title = eventService.id;
         });
@@ -56,13 +58,56 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
             });
         }
 
+        $scope.songUpvote = function(song) {
+
+            songArr = $scope.playlist.songs;
+
+            if (!$scope.playlist.songs[songArr.indexOf(song)].up && !$scope.playlist.songs[songArr.indexOf(song)].down) { // both off
+              $scope.playlist.songs[songArr.indexOf(song)].votes++;
+              $scope.playlist.songs[songArr.indexOf(song)].up = true;
+              $scope.playlist.songs[songArr.indexOf(song)].down = false;
+            }
+            else if ($scope.playlist.songs[songArr.indexOf(song)].up) { // upvote on
+              $scope.playlist.songs[songArr.indexOf(song)].votes--;
+              $scope.playlist.songs[songArr.indexOf(song)].up = false;
+            }
+            else if ($scope.playlist.songs[songArr.indexOf(song)].down) { // downvote on
+              $scope.playlist.songs[songArr.indexOf(song)].votes += 2;
+              $scope.playlist.songs[songArr.indexOf(song)].up = true;
+              $scope.playlist.songs[songArr.indexOf(song)].down = false;
+            }
+          }
+
+          $scope.songDownvote = function(song) {
+
+            songArr = $scope.playlist.songs;
+
+            if (!$scope.playlist.songs[songArr.indexOf(song)].up && !$scope.playlist.songs[songArr.indexOf(song)].down) { // both off
+              $scope.playlist.songs[songArr.indexOf(song)].votes--;
+              $scope.playlist.songs[songArr.indexOf(song)].up = false;
+              $scope.playlist.songs[songArr.indexOf(song)].down = true;
+            }
+            else if ($scope.playlist.songs[songArr.indexOf(song)].down) { // downvote on
+              $scope.playlist.songs[songArr.indexOf(song)].votes++;
+              $scope.playlist.songs[songArr.indexOf(song)].down = false;
+            }
+            else if ($scope.playlist.songs[songArr.indexOf(song)].up) { // upvote on
+              $scope.playlist.songs[songArr.indexOf(song)].votes -= 2;
+              $scope.playlist.songs[songArr.indexOf(song)].down = true;
+              $scope.playlist.songs[songArr.indexOf(song)].up = false;
+            }
+          }
 
         $scope.addModal = function() {
             console.log(eventService.id);
+
+            // show column titles
+
+
             var modal = new ModalFactory({
                 // Add CSS classes to the modal
                 // Can be a single string or an array of classes
-                class: 'tiny dialog',
+                class: 'medium dialog modalHeight',
                 // Set if the modal has a background overlay
                 overlay: true,
                 // Set if the modal can be closed by clicking on the overlay

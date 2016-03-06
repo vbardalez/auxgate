@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var SpotifyWebApi = require('spotify-web-api-node');
 var Connection = require('tedious').Connection;
-var uuid = require('node-uuid');
 
 var config = {
     userName: 'auxgate',
@@ -16,19 +15,23 @@ var config = {
     options: {
         encrypt: true,
         database: 'AdventureWorks'
-    }
+    },
+    rowCollectionOnDone: true
 };
-var connection = new Connection(config);
+
+connection = new Connection(config);
 connection.on('connect', function(err) {
     // If no error, then good to proceed.
     console.log("Connected");
 });
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 var search = require('./routes/search');
 var playlist = require('./routes/playlist');
+var sql = require('./routes/sql');
 
 var stateKey = 'spotify_auth_state';
 
@@ -62,6 +65,7 @@ app.use('/users', users);
 app.use('/auth', auth);
 app.use('/search', search);
 app.use('/playlist', playlist);
+app.use('/sql', sql);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

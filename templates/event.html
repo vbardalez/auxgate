@@ -1,29 +1,8 @@
-<!--
 <div class="grid-container small-12 large-8 medium-12">
   <h1>{{title}}</h1>
   <p class="lead"><strong>{{Description}}</strong>.</p>
   <a class="button" href="#" zf-open="my-notify">Static Notification</a>
-  <div class="grid-block" style="background-color:#D3D3D3">
-    <div class="grid-content large-3 small-3" style="text-align:center">
-    </div>
-    <div class="grid-content large-4 small-4" style="padding-top: 13px">
-      Song Name
-    </div>
-    <div class="grid-content large-5 small-5" style="padding-top: 13px">
-      Artist Name
-    </div>
-  </div>
-  <div class="grid-block vertical" style="background-color:#D3D3D3">
-    <div class="grid-block" ng-repeat="song in playlist.songs | orderBy: '-votes' track by $index">
-    </div>
-  </div>
-</div>
--->
-<div class="grid-container small-12 large-8 medium-12">
-  <h1>{{title}}</h1>
-  <p class="lead"><strong>{{Description}}</strong>.</p>
-  <a class="button" href="#" zf-open="my-notify">Static Notification</a>
-  <div class="grid-block" style="background-color:#D3D3D3">
+  <div class="grid-block rowHeadings" style="background-color:#D3D3D3">
     <div class="grid-content large-2 small-2" style="align:center">
     </div>
     <div class="grid-content large-4 small-4" style="padding-top: 13px">
@@ -37,7 +16,7 @@
     </div>
   </div>
   <div class="grid-block vertical" style="background-color:#D3D3D3">
-    <div class="grid-block" ng-repeat="song in playlist.songs | orderBy: '-votes' track by $index">
+    <div class="grid-block" ng-class="{'animated fadeIn selectedElem':song.up||song.down}" ng-repeat="song in playlist.songs | orderBy: '-votes' track by $index">
       <div class="grid-content vertical large-2 small-2" style="align:center">
         <div class="grid-block">
           <div class="grid-content" style="text-align:center; padding-top: 5px" >

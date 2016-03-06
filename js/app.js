@@ -89,16 +89,25 @@
       modal.activate();
   }
 	$scope.Description = "This event is for turnups";
-	$scope.playlist = {songs: [{name: "1", artist: "Justin Bieber", votes: 4}, 
-	{name: "2", artist: "def", votes: 3},{name: "3", artist: "Justin Bieber", votes: 4}, 
-	{name: "4", artist: "def", votes: 3},{name: "5", artist: "Justin Bieber", votes: 4}, 
-	{name: "6", artist: "def", votes: 3},{name: "7", artist: "Justin Bieber", votes: 4}, 
-	{name: "8", artist: "deqwerf", votes: 5},{name: "9", artist: "Justin Bieber", votes: 4}, 
-	{name: "10", artist: "deerqwf", votes: 2},{name: "11", artist: "Justin Bieber", votes: 4}, 
-	{name: "12", artist: "dafef", votes: 1},{name: "13", artist: "Justin Bieber", votes: 4}, 
-	{name: "14", artist: "dasdfef", votes: 3},{name: "15", artist: "Justin Bieber", votes: 4}, 
-	{name: "16", artist: "adfdef", votes: 4},{name: "17", artist: "Justin Bieber", votes: 4}, 
-	{name: "18", artist: "def", votes: 5}], Name: "Name"};
+	$scope.playlist = { songs: [
+    {name: "Sorry", artist: "Justin Bieber", votes: 4}, 
+	  {name: "Love Yourself", artist: "Justin Bieber", votes: 3},
+    {name: "What Do You Mean?", artist: "Justin Bieber", votes: 4}, 
+	  {name: "Baby", artist: "Justin Bieber", votes: 3},
+    {name: "I'll Show You", artist: "Justin Bieber", votes: 4}, 
+	  {name: "Boyfriend", artist: "Justin Bieber", votes: 3},
+    {name: "Never Say Never", artist: "Justin Bieber", votes: 4}, 
+	  {name: "Beauty and a Beat", artist: "Justin Bieber", votes: 5},
+    {name: "As Long As You Love Me", artist: "Justin Bieber", votes: 4}, 
+	  {name: "The Feeling", artist: "Justin Bieber", votes: 2},
+    {name: "Love Me", artist: "Justin Bieber", votes: 4}, 
+	  {name: "Mark My Words", artist: "Justin Bieber", votes: 1},
+    {name: "One Time", artist: "Justin Bieber", votes: 4}, 
+	  {name: "One Less Lonely Girl", artist: "Justin Bieber", votes: 3},
+    {name: "Life Is Worth Living", artist: "Justin Bieber", votes: 4}, 
+	  {name: "No Sense", artist: "Justin Bieber", votes: 4},
+    {name: "Purpose", artist: "Justin Bieber", votes: 4}, 
+	  {name: "Eenie Meenie", artist: "Justin Bieber", votes: 5}], Name: "Name"};
 	}]);
 
   config.$inject = ['$urlRouterProvider', '$locationProvider', '$stateProvider'];

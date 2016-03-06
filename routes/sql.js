@@ -13,7 +13,7 @@ router.post('/addSong', function(req, res, next) {
             console.log(err);
         }
     });
-    request.addParameter('AuxGateTrackId', TYPES.UniqueIdentifier, uuid.v4(););
+    request.addParameter('AuxGateTrackId', TYPES.UniqueIdentifier, uuid.v4());
     request.addParameter('SpotifyTrackId', TYPES.NVarChar, req.body.trackId);
     request.addParameter('TotalVotes', TYPES.Int, 0);
     request.addParameter('PlaylistId', TYPES.NVarChar, req.body.playlistId);

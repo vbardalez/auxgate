@@ -94,7 +94,7 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
               $scope.playlist.songs[songArr.indexOf(song)].votes -= 2;
               $scope.playlist.songs[songArr.indexOf(song)].down = true;
               $scope.playlist.songs[songArr.indexOf(song)].up = false;
-              song.votes->2
+              song.votes-=2;
             }
               $http.post(url, song).then( ()=> {}, () => {"error"})
           }

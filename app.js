@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan'); 
+var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var SpotifyWebApi = require('spotify-web-api-node');
@@ -13,11 +13,14 @@ var config = {
     password: 'QHacks16!',
     server: 'auxgate.database.windows.net',
     // If you are on Microsoft Azure, you need this:
-    options: {encrypt: true, database: 'AdventureWorks'}
+    options: {
+        encrypt: true,
+        database: 'AdventureWorks'
+    }
 };
 var connection = new Connection(config);
 connection.on('connect', function(err) {
-// If no error, then good to proceed.
+    // If no error, then good to proceed.
     console.log("Connected");
 });
 
@@ -34,7 +37,7 @@ var app = express();
 spotifyApi = new SpotifyWebApi({
     clientId: 'f35c748829ad4a7382b163a38c307d3e',
     clientSecret: '17c0f4df8c9e47adbcb11235fe58d963',
-    redirectUri: 'http://localhost:3000/auth/callback' 
+    redirectUri: 'http://localhost:3000/auth/callback'
 });
 
 // view engine setup
@@ -52,7 +55,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'))
-   .use(cookieParser());
+    .use(cookieParser());
 
 app.use('/', routes);
 app.use('/users', users);

@@ -55,7 +55,7 @@ router.get('/callback', function(req, res) {
             }));
     } else {
 
-        res.clearCookie(stateKey);
+        //res.clearCookie(stateKey);
 
         spotifyApi.authorizationCodeGrant(code)
             .then(function(data) {

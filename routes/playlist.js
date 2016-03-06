@@ -6,29 +6,26 @@ var router = express.Router();
 router.post('/create', function(req, res, next) {
     // Search artists whose name contains 'Love'
     console.log(req.body);
-    
-    
+
     spotifyApi.getMe()
-      .then(function(user) {
-        spotifyApi.createPlaylist(user, req, { 'public' : true })
-          .then(function(data) {
-            var user = data;
-            spotifyApi.createPlaylist(user, req.body.Name, { 'public' : true })
-                  .then(function(data) {
+        .then(function(_user) {
+            var user = _user.body.id;
+            spotifyApi.createPlaylist(user, req.body.Name, {
+                'public': true
+            })
+                .then(function(data) {
+                    console.log(data);
                     res.json(data);
-                  }, function(err) {
-                        res.json(err);
-                  });
-          }, function(err) {
-                res.send(err);
-          });
-      }, function(e) {
-        res.send(e);
-      });
+                }, function(err) {
+                    res.json(err);
+                });
+        }, function(e) {
+            res.send(e);
+        });
 
 });
 
-router.get('/addtrack/:input', function(req, res, next) {
+router.get('/all-tracks/:id', function(req, res, next) {
     // Search artists whose name contains 'Love'
     spotifyApi.searchArtists(req.params.input)
         .then(function(data) {
@@ -38,14 +35,23 @@ router.get('/addtrack/:input', function(req, res, next) {
         });
 });
 
-router.get('/tracks/:input', function(req, res, next) {
+
+router.post('/add-track', function(req, res, next) {
     // Search tracks whose artist's name contains 'Love'
-    spotifyApi.searchTracks(req.params.input)
-        .then(function(data) {
-            res.json(data.body);
-        }, function(err) {
-            res.json(err);
+    spotifyApi.getMe()
+        .then(function(_user) {
+                    var user = _user.body.id;
+                    console.log(req.body);
+                    spotifyApi.addTracksToPlaylist(user, req.body.playlistId, ["spotify:track:" + req.body.song.id])
+                        .then(function(data) {
+                            res.json(data);
+                        }, function(err) {
+                            res.json(err);
+                        });
+        }, function(e) {
+            res.send(e);
         });
+
 });
 
 

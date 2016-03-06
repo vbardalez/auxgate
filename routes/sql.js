@@ -8,7 +8,7 @@ var TYPES = require('tedious').TYPES;
 
 router.post('/addSong', function(req, res, next) {
 
-    request = new Request("INSERT dbo.Tracks (AuxGateTrackId, SpotifyTrackId, TotalVotes, PlaylistId) OUTPUT VALUES (@AuxGateTrackId, @SpotifyTrackId, @TotalVotes, @PlaylistId);", function(err) {
+    request = new Request("INSERT INTO dbo.Tracks (AuxGateTrackId, SpotifyTrackId, TotalVotes, PlaylistId) VALUES (@AuxGateTrackId, @SpotifyTrackId, @TotalVotes, @PlaylistId);", function(err) {
         if (err) {
             console.log(err);
         }

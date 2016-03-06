@@ -56,6 +56,9 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
             });
         }
 
+        $scope.PublishUpVote = function() {
+          
+        }
 
         $scope.addModal = function() {
             console.log(eventService.id);
@@ -81,16 +84,24 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
                     addSong: function(_song) {
                         _song.votes=0;
                         console.log(_song);
-                        var url = apiBaseURL + "/playlist/add-track";
+                        var spoturl = apiBaseURL + "/playlist/add-track";
                         var data = {playlistId: eventService.id,
                                     song: _song}
-                        $http.post(url, data).then(() => {
+                        $http.post(spoturl, data).then(() => {
                             console.log($scope.playlist);
                             $scope.playlist.songs.push(_song);
                             console.log($scope.playlist.songs);
+                            var sqlurl = apiBaseURL + "/sql/addSong";
+                            var sqldata = {playlistId: eventService.id,
+                                        trackId: _song.id};
+                            $http.post(url, data).then(() => {
+                            }, () => {
+                                alert("update failed");
+                            });
                         }, () => {
                             alert("update failed");
                         });
+                        
                     },
                     searchSong: function(query, searchedSongs) {
                         var url = apiBaseURL + "/search/tracks/" + query;

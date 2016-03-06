@@ -1,5 +1,5 @@
 
-var apiBaseURL = "http://www.auxgate.xyz";
+var apiBaseURL = "http://localhost:3000";
 
 var app = angular.module('application', [
     'ui.router',
@@ -159,12 +159,18 @@ app.controller('eventController', ['$scope', '$http', 'ModalFactory', 'eventServ
                 }
             });
             modal.activate();
+
         }
 
         $scope.Description = "This event is for turnups";
         $scope.playlist = {
             songs: [],
             Name: "Name"
+        };
+
+        $scope.ms_to_min_sec = function(ms) {
+            var secondsStr = "" + parseInt(ms/1000);
+            return (parseInt(ms/60000) + ":" + secondsStr.substring(0,2));
         };
     }
 ]);

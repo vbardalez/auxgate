@@ -29,14 +29,14 @@
       </div>
       <div class="grid-content medium-2 small-1"></div>
   </div>
-  <div class="grid-block rowHeadings">
+  <div class="grid-block rowHeadings" ng-class="{'visible':playlist.songs[0] != undefined}">
     <div class="grid-content medium-2 small-2" style="text-align: center; padding-top: 13px">
       &nbsp;
     </div>
     <div class="grid-block medium-3 small-4" style="padding-top: 13px">
       Song Name
     </div>
-    <div class="grid-block medium-4 small-5" style="padding-top: 13px">
+    <div class="grid-block medium-4 small-6" style="padding-top: 13px">
       Artist Name
     </div>
     <div class="grid-content medium-3 small-1 hideCol" style="padding-top: 13px">
@@ -44,7 +44,7 @@
     </div>
   </div>
   <div class="grid-block vertical playlistTable">
-    <div class="grid-block rowElem" ng-class="{'animated fadeIn selectedElem':song.up||song.down, 'hoveredElem': hover}" ng-repeat="song in playlist.songs | orderBy: '-votes' track by $index" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+    <div class="grid-block rowElem animated fadeIn" ng-class="{'fadeIn selectedElem':song.up||song.down, 'hoveredElem': hover}" ng-repeat="song in playlist.songs | orderBy: '-votes' track by $index" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
       <div class="grid-content vertical medium-2 small-2">
         <div class="grid-block">
           <div class="grid-content" style="text-align:center;" >
@@ -71,7 +71,7 @@
         </div> 
       </div>
       <div class="grid-content medium-3 small-1 hideCol" style="padding-top: 13px">
-        {{song.duration}}
+        {{ms_to_min_sec(song.duration_ms)}}
       </div>
     </div>
   </div>

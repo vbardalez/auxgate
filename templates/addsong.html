@@ -5,7 +5,7 @@
 			<h1>{{name}}</h1>
 		</div>
 		<div class="grid-block small-1" style="overflow-y: hidden; float: right;">
-          	<i zf-close="" class="fa fa-times fa-2x"></i>
+          	<i zf-close="" class="fa fa-times fa-2x" ></i>
 		</div>
 	</div>
 
@@ -22,7 +22,7 @@
 		</form>
 	</div>
 	<div class="grid-block vertical" >
-		<div class="grid-block rowHeadings" style="padding-bottom: 18px">
+		<div class="grid-block rowHeadings" ng-class="{'visible':searchedSongs[0] != undefined}" style="padding-bottom: 18px">
 		    <div class="grid-content medium-2 small-2" style="text-align:center;">
 		    	&nbsp;
 		    </div>
@@ -37,7 +37,7 @@
 			<div class="grid-block" ng-repeat="song in searchedSongs | orderBy: '-votes' track by $index" style="overflow-y: hidden; overflow-x: hidden; min-height:50px">
 		        <div class="grid-block medium-2 small-2"style="overflow-y: hidden; overflow-x: hidden">
 		        	<div class="grid-content" style="overflow-y: hidden; overflow-x: hidden">
-		            	<i ng-click="addSong(song, song.artists)" class="fa fa-plus fa-2x"></i>
+		            	<i ng-click="addSong(song)" class="fa fa-plus fa-2x"></i>
 		          	</div>
 		        </div>
 		        <div class="grid-block medium-5 small-5" style="overflow-y: hidden; overflow-x: hidden">

@@ -1,44 +1,75 @@
-<div class="grid-container small-12 large-8 medium-12" style="margin-top: 30px">
-  <h1>{{title}}</h1>
-  <p class="lead"><strong>{{Description}}</strong>.</p>
-  <a class="button" href="#" zf-open="my-notify">Static Notification</a>
-  <div class="grid-block rowHeadings" style="background-color:#D3D3D3; margin-top: 30px">
-    <div class="grid-content large-2 small-2" style="align:center">
+<div class="contentContainer grid-container small-12 large-8 medium-8">
+
+  <div class="infoContainer grid-content">
+    <h1>{{title}}</h1>
+    <!--
+    <textarea class="copyURL" readonly rows="1"></textarea>
+    <script>
+    window.onload = function(){
+      document.getElementsByClassName("copyURL")[0].innerHTML = window.location.toString();
+    }</script>
+    -->
+    <p class="infoDescription"><strong>{{Description}}</strong>.</p>
+
+  </div>
+
+  <div class="grid-block" style="padding-bottom: 18px">
+      <div class="grid-content medium-2 small-1"></div>
+      <div class="grid-content medium-8 small-10" style="text-align:center;" >
+
+        Vote below
+        or
+        <br/><br/>
+        <a class="button request" ng-click="addModal()">
+          <i class="fa fa-plus"></i>
+          <span class="request text">Request a New Song</span>
+        </a>
+
+        <br/>
+      </div>
+      <div class="grid-content medium-2 small-1"></div>
+  </div>
+  <div class="grid-block rowHeadings">
+    <div class="grid-content medium-2 small-2" style="text-align: center; padding-top: 13px">
+      &nbsp;
     </div>
-    <div class="grid-content large-4 small-4" style="padding-top: 13px">
+    <div class="grid-block medium-3 small-4" style="padding-top: 13px">
       Song Name
     </div>
-    <div class="grid-content large-5 small-5" style="padding-top: 13px">
+    <div class="grid-block medium-4 small-5" style="padding-top: 13px">
       Artist Name
     </div>
-    <div class="grid-block large-1 small-1" style="padding-top: 13px">
-      <a><img zf-iconic="" icon="action" size="medium" ng-click="addModal()"></a>
+    <div class="grid-content medium-3 small-1 hideCol" style="padding-top: 13px">
+      Duration
     </div>
   </div>
-  <div class="grid-block vertical" style="background-color:#D3D3D3">
-    <div class="grid-block" ng-class="{'animated fadeIn selectedElem':song.up||song.down}" ng-repeat="song in playlist.songs | orderBy: '-votes' track by $index">
-      <div class="grid-content vertical large-2 small-2" style="align:center">
+  <div class="grid-block vertical playlistTable">
+    <div class="grid-block rowElem" ng-class="{'animated fadeIn selectedElem':song.up||song.down, 'hoveredElem': hover}" ng-repeat="song in playlist.songs | orderBy: '-votes' track by $index" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+      <div class="grid-content vertical medium-2 small-2">
         <div class="grid-block">
-          <div class="grid-content" style="text-align:center; padding-top: 5px" >
-            <img zf-iconic="" class="voteButton" ng-class="{'iconic-color-success':song.up, 'animated fadeIn':song.up}" icon="chevron" icon-attrs="{ direction: 'top' }" size="small" ng-click="songUpvote(song);">
+          <div class="grid-content" style="text-align:center;" >
+            <img zf-iconic="" class="voteButton" ng-class="{'iconic-color-success':song.up, 'animated fadeInUp':song.up}" icon="chevron" icon-attrs="{ direction: 'top' }" size="small" ng-click="songUpvote(song);">
           </div>
         </div>
         <div class="grid-block">
-          <div class="grid-content" style="text-align:center">
+          <div class="grid-content songVotes" style="text-align:center">
             {{song.votes}}
           </div>
         </div>
         <div class="grid-block" >
           <div class="grid-content" style="text-align:center; padding-bottom: 5px">
-          <img zf-iconic="" class="voteButton" ng-class="{'iconic-color-alert':song.down, 'animated fadeIn':song.down}" icon="chevron" icon-attrs="{ direction: 'bottom' }" size="small" ng-click="songDownvote(song)">
+          <img zf-iconic="" class="voteButton" ng-class="{'iconic-color-alert':song.down, 'animated fadeInDown':song.down}" icon="chevron" icon-attrs="{ direction: 'bottom' }" size="small" ng-click="songDownvote(song)">
           </div>
         </div>
       </div>
-      <div class="grid-content large-4 small-4" style="padding-top: 13px">
+      <div class="grid-content medium-3 small-4" style="padding-top: 13px">
         {{song.name}}
       </div>
-      <div class="grid-content large-6 small-6" style="padding-top: 13px">
+      <div class="grid-content medium-4 small-6" style="padding-top: 13px">
         {{song.artist}}
+      </div>
+      <div class="grid-content medium-3 small-1 hideCol" style="padding-top: 13px">
+        {{song.duration}}
       </div>
     </div>
   </div>

@@ -3,12 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auxgate</title>
+    <title>AuxGate</title>
 
     <!-- css -->
     <link href="assets/css/app.css" rel="stylesheet" type="text/css">
     <link href="assets/css/animate.css" rel="stylesheet" type="text/css">
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <!-- js libraries -->
     <script src="assets/js/foundation.js"></script>
@@ -23,15 +25,17 @@
   </head>
   <body>
     <div class="grid-frame vertical">
-      <div class="grid-container">
-      <div class="grid-block" style="padding-top:20vh">
-        <h1>Auxgate</h1>
-
+      <div class="grid-content shrink" style="padding: 0;">
+        <ul class="primary condense menu-bar">
+          <li>
+            <a id="auxLogo" ui-sref="home">
+              <img src="assets/img/auxgate_med.png"/><strong>AuxGate</strong>
+            </a>
+          </li>
+        </ul>
       </div>
-      <div class="grid-block">
-        <a href="./auth/login"><img src="public/images/Login/png/log_in-desktop-large.png"/></a>
+      <div ui-view class="bigContentContainer grid-content">
       </div>
-    </div>
     </div>
   </body>
 </html>

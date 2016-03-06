@@ -1,14 +1,28 @@
-<div class="grid-container">
-  <h1>{{title}}</h1>
-  <p class="lead"><strong>{{Description}}</strong>.</p>
+<div class="grid-container homeContainer">
 
-<a class="button" href="#" zf-open="my-notify">Static Notification</a>
+	<div class="grid-block vertical" style="text-align: center;">
+	  	<div class="grid-content">
+			<img class="logoCircle" style="width: 250px; height: 250px; margin: 0 auto 0 auto;" src="./assets/img/auxgate_med.png"/>
+			<h1 style="margin: 0 auto 0 auto;">{{title}}</h1>
+		</div>
+		<div class="grid-content" style="padding-top: 15px;">
+			<p style="margin: 0 auto 0 auto; font-size: 24px; font-style: italic;">{{slogan}}</p>
+		</div>
+		<div class="grid-content" style="padding-top: 15px;">
+			<p style="margin: 0 auto 0 auto; font-size: 18px;">{{Description}}</p>
+		</div>
+		<div class="grid-content" style="padding-top: 15px;">
+			<a href="./auth/login">
+	  		<img src="public/images/Login/png/log_in-desktop-large.png"/></a>
+	 	</div>
+		<div class="grid-content" style="padding-top: 30px;">
+        	<a class="button" ng-click="addModal()">Create an Aux playlist</a>
+		</div>
+
+ 	</div>
  
-<zf-notification-static id="my-notify" zf-advise="" title="My static notification" image="http://placehold.it/40x40">
-<p>This notification is static, it works similarly to a programmatic with some subtle differences.</p>
-</zf-notification-static>
-
-	<form ng-submit="startEvent(event)">
+ 	<!--
+	<form ng-submit="startEvent(event)" style="margin-top: 30vh;">
 		<label>
 			Name
 			<input type="text" placeholder="Text field" ng-model="event.Name">
@@ -20,4 +34,5 @@
 		{{event}}
 		<input type=submit class="button" ui-sref="event"></input>
 	</form>
+	-->
 </div>

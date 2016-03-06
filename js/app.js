@@ -1,4 +1,3 @@
-
 var apiURL = "https://abc.bca";
 
   var app = angular.module('application', [
@@ -17,6 +16,7 @@ var apiURL = "https://abc.bca";
 	$scope.startEvent = function(event) {
 		$http.post("abc.abc", event).then(()=> {alert("Success");}, () => {alert("Failed")});
 	}
+  $scope.slogan = "Pass the Aux Cord";
 	$scope.Description = "AuxGate is a gateway that allows the audience to get input on what song gets played";
 	}]);
 
@@ -74,7 +74,7 @@ var apiURL = "https://abc.bca";
     var modal = new ModalFactory({
       // Add CSS classes to the modal
       // Can be a single string or an array of classes
-      class: 'medium dialog',
+      class: 'medium dialog modalHeight',
       // Set if the modal has a background overlay
       overlay: true,
       // Set if the modal can be closed by clicking on the overlay

@@ -13,6 +13,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 // irc
+/*
 var irc = require('irc');
 var bot = new irc.Client('irc.twitch.tv', 'syndromic', {
     port: 6667,
@@ -32,6 +33,7 @@ bot.addListener('message', function(from, to, message) {
 bot.addListener('message', function (from, to, message) {
     console.log(from + ' => ' + to + ': ' + message);
 });
+*/
 
 var client_id = 'f35c748829ad4a7382b163a38c307d3e'; // Your client id
 var client_secret = '17c0f4df8c9e47adbcb11235fe58d963'; // Your client secret

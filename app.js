@@ -9,6 +9,7 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
+var search = require('./routes/search');
 
 var stateKey = 'spotify_auth_state';
 
@@ -40,6 +41,7 @@ app.use(express.static(__dirname + '/public'))
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
+app.use('/search', search);
 
 console.log('Listening on 8888');
 app.listen(8888);

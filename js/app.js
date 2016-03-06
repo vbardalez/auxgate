@@ -1,5 +1,5 @@
 
-var apiURL = "http://localhost:3000/search/";
+var apiBaseURL = "http://localhost:3000";
 
   var app = angular.module('application', [
     'ui.router',
@@ -14,10 +14,15 @@ var apiURL = "http://localhost:3000/search/";
 
   app.controller('mainController', ['$scope', '$http', function ($scope, $http) {
 	$scope.title = "AuxGate";
-	$scope.startEvent = function(event) {
-		$http.post("abc.abc", event).then(()=> {alert("Success");}, () => {alert("Failed")});
+	$scope.startEvent = function(a) {
+          var url = apiBaseURL + "/playlist/create/";
+          $http.post(url,a.name).then((data) => {
+              console.log(data);
+          }, (error) => {console.log(error);})
 	}
 	$scope.Description = "AuxGate is a gateway that allows the audience to get input on what song gets played";
+  $scope.createPlaylist = function (name) {
+        }
 	}]);
 
 
@@ -45,33 +50,33 @@ var apiURL = "http://localhost:3000/search/";
       templateUrl: 'templates/addsong.html',
       // Allows you to pass in properties to the scope of the modal
       contentScope: {
-        searchedSongs: [{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "deqwerf", votes: 5},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "deerqwf", votes: 2},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "dafef", votes: 1},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "dasdfef", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "adfdef", votes: 4},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "def", votes: 5},
-  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "deqwerf", votes: 5},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "deerqwf", votes: 2},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "dafef", votes: 1},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "dasdfef", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "adfdef", votes: 4},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "def", votes: 5},{name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "deqwerf", votes: 5},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "deerqwf", votes: 2},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "dafef", votes: 1},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "dasdfef", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "adfdef", votes: 4},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-  {name: "abc", artist: "def", votes: 5}],
+        searchedSongs: [{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "deqwerf", votes: 5},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "deerqwf", votes: 2},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "dafef", votes: 1},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "dasdfef", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "adfdef", votes: 4},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "def", votes: 5},
+  {name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "deqwerf", votes: 5},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "deerqwf", votes: 2},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "dafef", votes: 1},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "dasdfef", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "adfdef", votes: 4},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "def", votes: 5},{name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "deqwerf", votes: 5},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "deerqwf", votes: 2},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "dafef", votes: 1},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "dasdfef", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "adfdef", votes: 4},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+  {name: "abc", artists: "def", votes: 5}],
         close: function() {
           modal.deactivate(); 
         $timeout(function() {
@@ -87,10 +92,10 @@ var apiURL = "http://localhost:3000/search/";
           });
         },
         searchSong: function (query, searchedSongs) {
-          var url = apiURL + query;
+          var url = apiBaseURL + "/search/tracks/" + query;
           $http.get(url).then((data) => {
-              searchedSongs=data;
-              console.log(data);
+                searchedSongs.splice(0, searchedSongs.length);
+                data.data.tracks.items.forEach((value) => { searchedSongs.push(value); });
           }, () => {alert("failed to search song");})
         }, 
 
@@ -101,16 +106,16 @@ var apiURL = "http://localhost:3000/search/";
   }
 
 	$scope.Description = "This event is for turnups";
-	$scope.playlist = {songs: [{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-	{name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-	{name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-	{name: "abc", artist: "def", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-	{name: "abc", artist: "deqwerf", votes: 5},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-	{name: "abc", artist: "deerqwf", votes: 2},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-	{name: "abc", artist: "dafef", votes: 1},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-	{name: "abc", artist: "dasdfef", votes: 3},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-	{name: "abc", artist: "adfdef", votes: 4},{name: "Baby", artist: "Justin Bieber", votes: 4}, 
-	{name: "abc", artist: "def", votes: 5}], Name: "Name"};
+	$scope.playlist = {songs: [{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+	{name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+	{name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+	{name: "abc", artists: "def", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+	{name: "abc", artists: "deqwerf", votes: 5},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+	{name: "abc", artists: "deerqwf", votes: 2},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+	{name: "abc", artists: "dafef", votes: 1},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+	{name: "abc", artists: "dasdfef", votes: 3},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+	{name: "abc", artists: "adfdef", votes: 4},{name: "Baby", artists: "Justin Bieber", votes: 4}, 
+	{name: "abc", artists: "def", votes: 5}], Name: "Name"};
 	}]);
   
   config.$inject = ['$urlRouterProvider', '$locationProvider', '$stateProvider'];

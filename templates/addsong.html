@@ -3,7 +3,7 @@
 		<form>
 			<span class="inline-label">
 			<input type="search" placeholder="Search a thing" ng-model="query">
-			<a href="#" class="button" ng-click="searchSong(query, searchedSongs)">Search</a>
+			<a class="button" ng-click="searchSong(query, searchedSongs)">Search</a>
 			</span>
 		</form>
 	</div>
@@ -17,8 +17,10 @@
 		          {{song.name}}
 		        </div></div>
 		        <div class="grid-block large-6 small-6" style="overflow-y: hidden; overflow-x: hidden"> <div class="grid-content" style="overflow-y: hidden; overflow-x: hidden">
-		        {{song.artist}}
-		        </div></div>
+		        	<div ng-repeat="artist in song.artists track by $index"> 
+		        	{{artist.name}}
+		    		</div> 
+		    </div>
 			</div>
 	</div>
 </div>
